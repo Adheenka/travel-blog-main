@@ -1,0 +1,290 @@
+{% load static %}
+{% load social_share %}
+{% load hitcount_tags %}
+{% load crispy_forms_tags %}
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'blog/main.css' %}">
+    <link rel="stylesheet" href="{% static 'blog/home.css' %}">
+    <link rel="stylesheet" href="{% static 'blog/search.css' %}">
+    <link rel="stylesheet" href="{% static 'blog/search3.css' %}">
+    <link rel="stylesheet" href="{% static 'blog/like1.css' %}">
+    <link rel="stylesheet" href="{% static 'blog/like.js' %}">
+   <link href="https://fonts.googleapis.com/css?family=Rokkitt" rel="stylesheet">
+		<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
+</head>
+
+    <header class="site-header">
+      <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
+        <div class="container">
+            <svg style="padding-right: 10px;" id="Capa_1" enable-background="new 0 0 512 512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><g><g><path d="m512 45c0-24.853-20.147-45-45-45h-422c-24.853 0-45 20.147-45 45v90c0 8.284 6.716 15 15 15h482c8.284 0 15-6.716 15-15z" fill="#7d81e7"/><path d="m467 0h-211v150h241c8.284 0 15-6.716 15-15v-90c0-24.853-20.147-45-45-45z" fill="#5e69e2"/><g><g><path d="m81 82.5h-20c-8.284 0-15-6.716-15-15s6.716-15 15-15h20c8.284 0 15 6.716 15 15s-6.716 15-15 15z" fill="#fff79f"/></g><g><path d="m161 82.5h-20c-8.284 0-15-6.716-15-15s6.716-15 15-15h20c8.284 0 15 6.716 15 15s-6.716 15-15 15z" fill="#90e36a"/></g><g><path d="m241 82.5h-20c-8.284 0-15-6.716-15-15s6.716-15 15-15h20c8.284 0 15 6.716 15 15s-6.716 15-15 15z" fill="#ff80a7"/></g></g><g><path d="m0 135v332c0 24.813 20.187 45 45 45h422c24.813 0 45-20.187 45-45v-332z" fill="#f9f9f9"/></g><path d="m256 512h211c24.813 0 45-20.187 45-45v-332h-256z" fill="#e2dff4"/></g><g><g><g><path d="m173.078 377.005c-10.979 0-11.626-.111-12.339-.233-4.801-.823-8.311-4.985-8.311-9.856v-99.916c0-5.523 4.478-10 10-10s10 4.477 10 10v90c6.774-.001 16.206-.036 24.962-.084h.057c5.497 0 9.968 4.44 9.999 9.944.03 5.522-4.421 10.024-9.944 10.056-11.356.063-19.104.089-24.424.089z" fill="#0a789b"/></g><path d="m116.811 309.839c4.165-5.525 6.638-12.393 6.638-19.829 0-18.202-14.809-33.01-33.01-33.01h-29.047c-5.522 0-10 4.477-10 10v100c0 2.66 1.06 5.21 2.944 7.087 1.875 1.866 4.412 2.913 7.056 2.913h.044c.268-.001 26.811-.119 34.076-.119 20.356 0 36.917-16.561 36.917-36.917 0-12.427-6.179-23.431-15.618-30.125zm-26.372-32.839c7.174 0 13.01 5.836 13.01 13.01s-5.836 13.01-13.01 13.01c-2.139 0-19.048.027-19.048.027v-26.047zm5.073 79.881c-4.385 0-15.704.042-24.12.076v-33.877c2.708-.011 24.12-.032 24.12-.032 9.328 0 16.917 7.589 16.917 16.917s-7.589 16.916-16.917 16.916z" fill="#0a789b"/><g><path d="m407.446 377c-33.084 0-60-26.916-60-60s26.916-60 60-60c12.021 0 23.624 3.545 33.553 10.252 4.576 3.092 5.78 9.308 2.688 13.884-3.091 4.577-9.31 5.779-13.884 2.689-6.61-4.465-14.341-6.826-22.357-6.826-22.056 0-40 17.944-40 40s17.944 40 40 40c20.124 0 29.573-14.565 32.298-30h-19.051c-5.522 0-10-4.477-10-10s4.478-10 10-10h29.915c5.522 0 10 4.477 10 10 0 35.328-21.861 60.001-53.162 60.001z" fill="#08475e"/></g><g><path d="m267.446 377c-33.084 0-60-26.916-60-60s26.916-60 60-60 60 26.916 60 60-26.916 60-60 60zm0-100c-22.056 0-40 17.944-40 40s17.944 40 40 40 40-17.944 40-40-17.944-40-40-40z" fill="#0a789b"/></g><path d="m267.446 257c-3.915 0-7.739.389-11.446 1.108v20.569c3.629-1.086 7.469-1.677 11.446-1.677 22.056 0 40 17.944 40 40s-17.944 40-40 40c-3.977 0-7.818-.592-11.446-1.677v20.569c3.708.719 7.532 1.108 11.446 1.108 33.084 0 60-26.916 60-60s-26.916-60-60-60z" fill="#08475e"/></g></g></g></svg>
+          <!-- <a class="navbar-brand mr-4" href="">Django Blog</a> -->
+
+          <buttwon class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+          </buttwon>
+          <div class="collapse navbar-collapse" id="navbarToggle">
+            <div class="navbar-nav mr-auto">
+
+                {% if user.is_authenticated %}
+              <a id="auth-links" style="  font-weight: 600; color:#F8F6F0" class="nav-item nav-link" href="{% url 'blog-home' %}">BLOG'S</a>
+              <a id="auth-links" style=" font-weight: 600;color:#F8F6F0" class="nav-item nav-link" href="{% url 'home' %}">HOME</a>
+            </div>
+            <!-- Navbar Right Side -->
+            <div class="navbar-nav">
+              <!-- <a class="nav-item nav-link" href="#">Login</a>
+              <a class="nav-item nav-link" href="#">Register</a> -->
+              <!-- <button class="noselect">Create Post</button> -->
+<!--                <h3 style="color: white;">Hello {{request.user}}</h3>-->
+                <a href="{% url 'blog-new' %}" id="auth-links">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                Create Post
+            </a>
+
+                <a href="{% url 'profile' %}" id="auth-links">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                Profile
+            </a>
+                <a href="{% url 'logout' %}" id="auth-links">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                Logout
+            </a>
+                {% else %}
+              <a href="{% url 'login' %}" id="auth-links">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                Login
+            </a>
+            <a href="{% url 'register' %}" id="auth-links">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                Register
+            </a>
+            <!-- <a href="#">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                Neon button
+            </a> -->
+                {% endif %}
+
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+ <form  class="search-bar" action="{% url 'search_App:searchResult' %}" method="get">
+     {% csrf_token %}
+	<input type="search"  placeholder="" name="q" pattern=".*\S.*" required>
+	<button class="search-btn" type="submit">
+		</button>
+</form>
+
+<body style="background-color:#ffffff">
+
+  {% for post in posts %}
+
+<div style="box-shadow: 6px 5px 66px #d7dfe2;" class="contanier ">
+<div class="cardbox shadow-lg bg-white">
+
+  <div class="row mx-auto">
+   <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+    <p style="background-color:#ffffff" class="post">
+                <div class="info">
+                    <div class="user">
+
+                        <div class="profile-pic"><img src="{{ post.author.profile.image.url }}" alt="" style="flex-shrink: 0;width: 50px; height: 45px; border-radius: 50%;"></div>
+
+                          <div class="media-body">
+			                 <p style=" font-size:18px; "class="m-0">&ensp;{{ post.author }}</p>
+
+				             <small><span style=" font-size:17px;" ><i class="icon ion-md-time"></i>&ensp; {{ post.date_posted|timesince }}  ago</span></small>
+			              </div>
+                        </div>
+
+                    <div class="dropdown float-right">
+			   <b   data-toggle="dropdown" aria-expanded="false">
+				<em style=" color: #8d8d8d; cursor: pointer;"  class="fa fa-ellipsis-h"></em>
+			   </b>
+			     <div class="dropdown-menu dropdown-scale dropdown-menu-right" role="menu" style=" position: absolute; transform: translate3d(-136px, 28px, 0px); top: 0px; left: 0px; will-change: transform;">
+				<a  class="dropdown-item" href="#"><h6 style=" font-weight:bold; font-size:15px; color:#69737a;">Hide post</h6></a>
+				<a  class="dropdown-item" href="{% url 'blog-update' post.id %}"><h6 style=" font-weight:bold; font-size:15px; color:#69737a;">edit your post</h6></a>
+				<a  class="dropdown-item" href="#"><h6> {%  post_to_whatsapp object_or_url %} </h6></a>
+			   </div>
+			  </div>
+                </div>
+
+			  <!-- START dropdown-->
+
+                <img class="col-12 col-sm-12 col-md-12 col-lg-12" src="{{ post.picture.url }}" class="post-image" alt="">
+
+                 <div class="post-footer-icons-left">
+
+                                   <div class="iconic ml-3">
+                                <a style=" font-size:23px; color:#051622;" class="post-comment-like-btn" href="{% url 'like' post.id %}" >
+                                  <i class="fa fa-heart-o post-comment-like-icon"></i>
+                               </a><span class="post-comment-like-number">{{post.likes.count}} like</span> <i style=" padding-left:8px; font-size:23px; color:#051622;" style="color" class='fa fa-eye' aria-hidden="true"> {% get_hit_count for post %}</i>
+                 </div>
+                <div class="post-content">
+                    <div class="reaction-wrapper">
+                    <img src="img/like.PNG" class="icon" alt="">
+                        <img src="img/comment.PNG" class="icon" alt="">
+                        <img src="img/send.PNG" class="icon" alt="">
+                        <img src="img/save.PNG" class="save icon" alt="">
+                    </div><br>
+                    <p class="likes">{{ post.title }}</p>
+                    <p class="description"><span>{{ post.content }} </span> </p>
+                    <p style="color: #1d1e22; "class="post-time" >{{ post.date_posted }}  </p>
+                <div style="padding-top: 10px;
+
+
+  border-top: 1px solid var(--gray);" class="social">
+                    <p style="font-family: 'Roboto',sans-serif;
+	font-color:#3dd0d8;
+	font-size:14px;
+	font-weight: bold;
+	text-decoration: none;
+	transition: 0.5s all ease-in-out;">comment on the post</p>
+                     {% if post.comments.all %}
+                            {% if post.comments.count > 3 %}
+                            <p id="viewComments" data-bs-toggle="modal" data-bs-target="#imageModal" data-url="{{ post.image.url }}"
+                                data-username="{{ post.author }}"
+                                data-profilepic="{{ post.author.profile.image.url }}" data-caption="{{ post.content }}"
+                                class="text-muted">View
+                                    all {{ post.comments.count }}
+                                    comment{{ post.comments.count | pluralize}}</p>
+                            {% endif %}
+                            {% else %}
+                            <p class="text-muted">No comments</p>
+                            {% endif %}
+                            <!-- Comments Loop -->
+                            {% for comment in post.comments.all|slice:"3" %}
+
+
+                            <p> <img src="{{ comment.user.profile.image.url }}" alt="" style="flex-shrink: 0;width: 45px; height: 40px; border-radius: 50%;"> <strong style=" font-size:15px; color: #1d1e22; ">@ {{ comment.user.username }} <br></strong> <p style=" font-family: 'Open Sans', sans-serif;
+	                         font-size: 14px;
+	                           line-height: 1.9185;
+	                         font-weight: 200;
+	                         color: #72728c;
+	                       -webkit-font-smoothing: antialiased;
+	                           -webkit-text-shadow: rgba(0,0,0,.01) 0 0 1px;
+	                              text-shadow: rgba(0,0,0,.01) 0 0 1px;">{{ comment.comment|truncatechars:20 }}</p>
+                            </p>
+                            <p style=" font-size:15px; color: #1d1e22; ">{{ comment.date|timesince }} ago.</p>
+                            {% endfor %}
+
+                            <!----------  -->
+
+
+
+
+                        <p style="font-family: 'Roboto',sans-serif;
+	font-color:#3dd0d8;
+	font-size:14px;
+	font-weight: bold;
+	text-decoration: none;
+	transition: 0.5s all ease-in-out;">leave a comment</p>
+                        <div class="comment">
+                            <form action="{% url 'comment' post_id=post.id %}" method="POST">
+                                {% csrf_token %}
+                                <input style=" border-radius:18px; padding:15px 43px; " class="col-12 col-sm-12 col-md-12 col-lg-12"class="py-2 small" type="text" name="comment" id="comment"
+                                    placeholder="Add a comment..." required>
+                                <div class="mt-2 text-right"><button  style="border-radius:14px;  "class="btn btn-primary btn-sm shadow-none" type="submit">Post comment</button></div>
+
+                            </form>
+
+                        </div>
+                   </p>
+                </div>
+         </div>
+   </div>
+
+ </div>
+</div>
+
+
+
+
+
+          </div>
+
+   </div>
+ </div>
+
+</body>
+</section>
+  {% endfor  %}
+
+ <footer >
+
+     <script>
+         const postCommentLikeBtn = document.querySelectorAll(".post-comment-like-btn");
+const postCommentLikeIcon = document.querySelectorAll(
+  ".post-comment-like-icon"
+);
+const postCommentLikeNum = document.querySelectorAll(
+  ".post-comment-like-number"
+);
+let isPostCommentLiked = false;
+
+postCommentLikeBtn.forEach((item, index) => {
+  postCommentLikeBtn[index].addEventListener("click", function () {
+    let num = Math.floor(postCommentLikeNum[index].innerText);
+    isPostCommentLiked
+      ? unLikePostComment(index, num)
+      : likePostComment(index, num);
+  });
+});
+
+function likePostComment(index, num) {
+  isPostCommentLiked = true;
+  num += 1;
+  postCommentLikeIcon[index].classList.replace("fa-heart-o", "fa-heart");
+  postCommentLikeIcon[index].classList.add("liked");
+  postCommentLikeNum[index].innerText = num;
+}
+
+function unLikePostComment(index, num) {
+  isPostCommentLiked = false;
+  num -= 1;
+  postCommentLikeIcon[index].classList.replace("fa-heart", "fa-heart-o");
+  postCommentLikeIcon[index].classList.remove("liked");
+  postCommentLikeNum[index].innerText = num;
+}
+     </script>
+          <ul class="nav justify-content-center border-bottom"  style="margin-top: 60px;">
+            <li class="nav-item"><a href="{% url 'home' %}" class="nav-link px-2 text-muted">Home</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Features</a></li>
+
+          </ul>
+          <p class="text-center text-muted">&copy; travel scaner</p>
+    </footer>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+</html>

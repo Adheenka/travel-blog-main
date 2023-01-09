@@ -1,0 +1,69 @@
+{% extends 'blog/base.html' %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+<style>
+.form-data {
+  width: 100%;
+  max-width: 35rem;
+  margin-top: 1rem;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+.form-data form {
+  background-color: #fff;
+  border: 2px solid #eee;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 1rem;
+  text-align: center;
+}
+
+.logo img {
+  width: 17.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.form-data form input {
+  padding: .8rem;
+  margin-bottom: .5rem;
+  border: 2px solid #eee;
+  border-radius: .4rem;
+}
+
+.form-btnm {
+  margin: 1rem 0 1.5rem;
+  height: 3rem;
+  background-color: #3897f0;
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #fff;
+  border: none;
+  border-radius: .4rem;
+  cursor: pointer;
+}
+
+</style>
+    <div class="content-section">
+        <form action="" method="POST" enctype="multipart/form-data">
+			{% csrf_token %}
+          <div class="logo">
+            <h3 style="padding: 20px; font-size: 20px;">Edit/Create New Post</h3>
+          </div>
+		  <!-- {{form|crispy}} -->
+          {{form.picture}} <br>
+          {{form.title}} <br>
+          {{form.content}} <br>
+
+          <button class="form-btnm" type="submit">Post</button>
+          <!-- <a href="index.html" class="form-btn" type="submit">Log in</a> -->
+
+        </form>
+        <div class="border-top pt-3">
+            <small class="text-muted"><a style=" color: #2A2C39; letter-spacing: .2em; font-size: 1.1rem; ; text-shadow: -2px 1px rgba(black, 0.1); font-weight: 600; " href="{% url 'blog-home' %}">Go Back</a></small>
+        </div>
+    </div>
+{% endblock content %}

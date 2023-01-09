@@ -1,0 +1,42 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+<style>
+
+    </style>
+        <article class="media content-section">
+            <img class="post__avatar" src="{{ object.author.profile.image.url }}" alt="">
+            <div class="media-body">
+              <div class="article-metadata">
+                <a class="rounded-circle account-img" href="#">{{ object.author }}</a>
+                <small class="text-muted">{{ object.date_posted }}</small> <br>
+                  {% if object.author == user %}
+
+                    <div>
+                        <a class="btn btn-outline-success" href="{% url 'blog-update' object.id %}">Update</a>
+                        <a class="btn btn-outline-danger" href="{% url 'blog-delete' object.id %}">Delete</a>
+                    </div>
+                  {% endif %}
+              </div>
+
+               <img class="col-12 col-sm-12 col-md-12 col-lg-12" src="{{ post.picture.url }}" class="post-image" alt="">
+
+                <div class="post-content">
+                    <div class="reaction-wrapper">
+                        <img src="img/like.PNG" class="icon" alt="">
+                        <img src="img/comment.PNG" class="icon" alt="">
+                        <img src="img/send.PNG" class="icon" alt="">
+                        <img src="img/save.PNG" class="save icon" alt="">
+                    </div>
+                    <p class="likes">{{ post.title }}</p>
+                    <p class="description"><span>{{ post.content }} </span> </p>
+                    <p style="color: #1d1e22; "class="post-time" >{{ post.date_posted }}  </p>
+
+                </div>
+            </div>
+            <br>
+          </article>
+ <small class="likes"><a style="color: #BD1E51; font-weight: 800;"id="auth-links" href="{% url 'blog-home' %}"> > Please confirm your post</a></small>
+
+
+
+{% endblock content %}
